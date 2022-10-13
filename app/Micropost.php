@@ -15,4 +15,8 @@ class Micropost extends Model
     {
         return $this->belongsTo(User::class);
     }
+    //第一引数が相手型のクラス、第二引数が中間テーブル名、第3引数が自分のidが入るカラム名、第四引数が相手のidが入るカラム名
+    public function favarite_users(){
+        return $this->belongsToMany(User::class, 'favarites', 'micropost_id', 'user_id')->withTimestamps();
+    }
 }
